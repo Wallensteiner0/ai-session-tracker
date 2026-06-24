@@ -1,0 +1,18 @@
+{
+  "model": "sonnet",
+  "awaySummaryEnabled": false,
+  "theme": "dark-daltonized",
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.local/bin/ai-tracker claude export-obsidian"
+          }
+        ]
+      }
+    ]
+  }
+}

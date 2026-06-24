@@ -85,11 +85,18 @@ ai-tracker claude export-json
 
 ### Automatischer Report nach jeder Session
 
-Empfehlung: Claude-Code-Hook am Session-Ende.
+**Option 1: Claude Code Stop-Hook (aktiv)**
 
-**Option 1: Claude Code after-turn Hook**
+Der Hook ist bereits in `~/.claude/settings.json` eingerichtet und laeuft auf diesem System.
+Nach jeder Session wird automatisch ein Markdown-Report nach Obsidian exportiert:
 
-Fuge in `~/.claude/settings.json` ein:
+```
+03_Projects/ai-session-tracker/claude-code/<datum>-<session-id>.md
+```
+
+Die Konfiguration liegt als Referenz auch unter `.claude/settings.json` im Projektordner.
+
+Um den Hook auf einem anderen System einzurichten, folgendes in `~/.claude/settings.json` eintragen:
 
 ```json
 {
@@ -100,7 +107,7 @@ Fuge in `~/.claude/settings.json` ein:
         "hooks": [
           {
             "type": "command",
-            "command": "python3 -m codex_session_tracker claude latest >> ~/claude-session-log.md"
+            "command": "~/.local/bin/ai-tracker claude export-obsidian"
           }
         ]
       }
