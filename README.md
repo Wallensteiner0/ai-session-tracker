@@ -126,26 +126,38 @@ cc-obsidian
 
 ```bash
 # crontab -e
-0 23 * * * python3 -m codex_session_tracker claude report > ~/claude-daily.md
+0 23 * * * ai-tracker claude report > ~/claude-daily.md
 ```
 
 ---
 
 ## Installation
 
-```powershell
-cd C:\Users\walle\Documents\Projekte\codex-session-tracker
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -e .
-```
+Das System nutzt kein pip-verwaltetes Environment (`uv`-managed Python).
+Die Installation erfolgt daher ueber ein Wrapper-Script in `~/.local/bin/`:
 
 ```bash
-# WSL / Linux
-cd /mnt/c/Users/walle/Documents/Projekte/codex-session-tracker
-pip install -e .
-ai-tracker --help
+cat > ~/.local/bin/ai-tracker << 'EOF'
+#!/usr/bin/env bash
+exec python3.11 -c "
+import sys
+sys.path.insert(0, '/mnt/c/Users/walle/Documents/Projekte/codex-session-tracker/src')
+from codex_session_tracker.cli import main
+main()
+" "$@"
+EOF
+chmod +x ~/.local/bin/ai-tracker
 ```
+
+Danach ist `ai-tracker` global verfuegbar:
+
+```bash
+ai-tracker --help
+ai-tracker claude scan
+```
+
+Kein venv, kein pip, keine Systemeingriffe.
+Der Pfad zum `src/`-Ordner muss bei Verzeichniswechsel angepasst werden.
 
 ---
 
