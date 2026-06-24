@@ -1,0 +1,47 @@
+{
+  "session_id": "6516a5b9-78fe-4f4b-989c-3b2309026666",
+  "project_slug": "-mnt-c-Users-walle-Documents-Projekte",
+  "project_path": "/mnt/c/Users/walle/Documents/Projekte",
+  "ai_title": "Codex zu AI-Session-Tracker erweitern",
+  "model": "anthropic/claude-4.6-sonnet-20260217",
+  "started_at": "2026-06-24T20:30:41.071Z",
+  "ended_at": "2026-06-24T21:14:27.203Z",
+  "duration_seconds": 2626,
+  "version": "2.1.186",
+  "tokens": {
+    "input": 112,
+    "output": 76351,
+    "cache_creation": 430416,
+    "cache_read": 3271077,
+    "source": "message.usage"
+  },
+  "turns": {
+    "user": 46,
+    "assistant": 66
+  },
+  "tool_calls": {
+    "count": 44,
+    "tools_used": [
+      "Bash",
+      "Edit",
+      "Read",
+      "TaskCreate",
+      "TaskUpdate",
+      "Write"
+    ]
+  },
+  "compact": {
+    "events": 0,
+    "pre_tokens": null,
+    "post_tokens": null
+  },
+  "git_branch": "HEAD",
+  "anomalies": [
+    "Hoher Output-Token-Verbrauch (> 50k)"
+  ],
+  "tracker": {
+    "source": "ai-session-tracker",
+    "provider": "claude_code",
+    "schema_version": 1
+  }
+}
